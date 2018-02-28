@@ -11,5 +11,6 @@ namespace TesteBranco.Models
         public String Autor { get; set; }
         public DateTimeOffset Data { get; set; }
         public String Descricao { get; set; }
+
     }
 }
