@@ -24,7 +24,7 @@ namespace TesteBranco
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ListaProfissionais");
+            await NavigationService.NavigateAsync("NavigationPage/Login");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -33,6 +33,7 @@ namespace TesteBranco
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<ListaProfissionais>();
             containerRegistry.RegisterForNavigation<DetalheProfissional>();
+            containerRegistry.RegisterForNavigation<Login>();
         }
     }
 }
