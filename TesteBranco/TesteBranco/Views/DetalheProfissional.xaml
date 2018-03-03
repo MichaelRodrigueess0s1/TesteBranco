@@ -8,9 +8,28 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label TextColor="Bisque" Text="{Binding Prof.Nome}"/>
-            <Label TextColor="Bisque" Text="{Binding Prof.Cargo}"/>
-            <Label TextColor="Bisque" Text="{Binding Prof.Especialidade}"/>
+            <Image Source="{Binding Prof.Imagem}"></Image>
+            <Label TextColor="Black" Text="{Binding Prof.Nome}"/>
+            <Label TextColor="Black" Text="{Binding Prof.Cargo}"/>
+            <Label TextColor="Black" Text="{Binding Prof.Especialidade}"/>
+
+            <ListView ItemsSource="{Binding ListaComentarios}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>                        
+                        <ViewCell>
+                            <StackLayout BackgroundColor="AliceBlue">
+                                <Label TextColor="Black" Text="{Binding Autor}"/>
+                                <Label TextColor="Black" Text="{Binding Data}"/>
+                                <Label TextColor="Black" Text="{Binding Descricao}"/>
+                            </StackLayout>                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            
+            <Button Text="Editar"></Button>
+            <Button Text="Deletar"></Button>            
         </StackLayout>    
     </ContentPage.Content>
 </ContentPage>

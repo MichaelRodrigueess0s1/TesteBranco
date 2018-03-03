@@ -2,9 +2,9 @@
 
 namespace TesteBranco.Views
 {
-    public partial class Login : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public Login()
+        public LoginPage()
         {
             InitializeComponent();
         }

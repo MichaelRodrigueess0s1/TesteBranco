@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TesteBranco.Views.LoginPage">
+
+
+    <ContentPage.Content>
+        <StackLayout Padding="5, 5, 5, 5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Image Source="logoOficial.png" />            
+            <Label Text="Login:" />
+            <Entry HorizontalOptions="FillAndExpand" Text="{Binding UserLogin.Login}" />
+            <Label Text="Senha:" />
+            <Entry Text="{Binding UserLogin.Senha}" />
+            <Button Command="{Binding GerarTokenCommand}" Text="Acessar" />
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

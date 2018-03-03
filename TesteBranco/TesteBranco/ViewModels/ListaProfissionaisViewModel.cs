@@ -5,12 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using TesteBranco.Models;
 using Prism.Navigation;
+using System.Windows.Input;
+
 namespace TesteBranco.ViewModels
 {
 	public class ListaProfissionaisViewModel : BindableBase
 	{
         private INavigationService _navigationService;
         private List<Profissional> _list;
+
+        public ICommand LogarCommand { get; private set; }
+
 
         public List<Profissional> Lista
         {
@@ -36,6 +41,7 @@ namespace TesteBranco.ViewModels
             param.Add("Profissional", profissional);
             _navigationService.NavigateAsync("DetalheProfissional", param);
         }
+       
 
     }
 }

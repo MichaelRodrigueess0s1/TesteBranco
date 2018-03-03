@@ -5,6 +5,10 @@ using TesteBranco.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using TesteBranco.Services.Interface;
+using TesteBranco.Services.Services;
+using Unity.Lifetime;
+using TesteBranco.Infrastructure.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace TesteBranco
@@ -24,7 +28,7 @@ namespace TesteBranco
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/Login");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -33,7 +37,15 @@ namespace TesteBranco
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<ListaProfissionais>();
             containerRegistry.RegisterForNavigation<DetalheProfissional>();
-            containerRegistry.RegisterForNavigation<Login>();
+            containerRegistry.RegisterForNavigation<LoginPage>();
+            //containerRegistry.Register<IAccessControlService>("AccessControlService");
+            //containerRegistry.Register<ISettingsUser>("SettingsUser");
+            //containerRegistry.Register<IValuesService>("ValuesService");
+            //containerRegistry.Register<IAccessControlService, AccessControlService>(new ContainerControlledLifetimeManager());
         }
+
+
+
+
     }
 }

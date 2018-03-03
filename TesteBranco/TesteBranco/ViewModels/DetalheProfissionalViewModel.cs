@@ -11,12 +11,21 @@ namespace TesteBranco.ViewModels
 	public class DetalheProfissionalViewModel : BindableBase, INavigatedAware
 	{
         private Profissional _profissional ;
-
         public Profissional Prof
         {
             get { return _profissional; }
             set { SetProperty(ref _profissional, value); }
         }
+
+        private List<Comentario> _listaComentarios;
+
+        public List<Comentario> ListaComentarios
+        {
+            get { return _listaComentarios; }
+            set { SetProperty(ref _listaComentarios, value); }
+        }
+
+
 
         public DetalheProfissionalViewModel()
         {
@@ -33,6 +42,7 @@ namespace TesteBranco.ViewModels
             if(parameters.ContainsKey("Profissional"))
             {
                 Prof = parameters.GetValue<Profissional>("Profissional");
+                ListaComentarios = Util.GeraDados.GeradorComentarios(Prof);
             }
         } 
     }
