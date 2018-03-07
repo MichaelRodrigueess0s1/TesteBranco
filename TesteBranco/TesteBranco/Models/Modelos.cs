@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using SQLite;
 
 namespace TesteBranco.Models
 {
@@ -15,7 +16,9 @@ namespace TesteBranco.Models
         public string P5 { get; set; } // E-mail
     }
 
-    public class UsuarioDTO
+
+    [Table("Usuario")]
+    public class UsuarioDTO : ModelBase
     {
         public string Nome { get; set; }
         public string Senha { get; set; }

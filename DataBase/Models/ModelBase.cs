@@ -1,7 +1,6 @@
 ﻿using SQLite;
 
-
-namespace TesteBranco.Data.Models
+namespace BaseApp.Data.Models
 {
     public class ModelBase
     {

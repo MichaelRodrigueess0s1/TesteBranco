@@ -1,9 +1,6 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TesteBranco.Data.Interface
+namespace BaseApp.Data.Interface
 {
     public interface IConnection
     {

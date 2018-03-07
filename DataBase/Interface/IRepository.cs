@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BaseApp.Data.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TesteBranco.Data.Models;
 
-namespace TesteBranco.Data.Interface
+namespace BaseApp.Data.Interface
 {
     public interface IRepository<T> where T : ModelBase
     {

@@ -1,7 +1,6 @@
 ﻿using SQLite;
 
-
-namespace TesteBranco.Data.Interface
+namespace BaseApp.Data.Interface
 {
     public interface IDatabase
     {

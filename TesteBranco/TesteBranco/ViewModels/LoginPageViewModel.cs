@@ -9,16 +9,20 @@ using TesteBranco.Infrastructure.Constants;
 using TesteBranco.Models;
 using TesteBranco.Services.Interface;
 using TesteBranco.Services.Services;
+using SQLiteDataBase.Repository;
+using SQLiteDataBase.Models;
 
 namespace TesteBranco.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
         public DelegateCommand GerarTokenCommand { get; }
+        
 
         private IAccessControlService AccessControlService;
         private IPageDialogService DialogService;
-        private IValuesService ValuesService;
+        private Repository<Usuario> Repository;
+        
 
         private UsuarioDTO userLogin;
 
@@ -31,6 +35,7 @@ namespace TesteBranco.ViewModels
         public LoginPageViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             UserLogin = new UsuarioDTO();
+            //Repository = new Repository<Usuario>();
 
             GerarTokenCommand = new DelegateCommand(GenerateToken);
             AccessControlService = new AccessControlService();

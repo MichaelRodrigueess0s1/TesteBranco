@@ -2,18 +2,19 @@
 using System;
 using System.IO;
 using Xamarin.Forms;
-using TesteBranco.Data.Interface;
+using TesteBranco.DataBase;
 using TesteBranco.iOS.Data;
 
 
 
-[assembly: Dependency(typeof(Connection))]
+[assembly: Dependency(typeof(DataBase_IOS))]
 namespace TesteBranco.iOS.Data
 {
-    public class Connection : IConnection
+    public class DataBase_IOS : IDataBase
     {
-        public SQLiteAsyncConnection GetConection(string filename)
+        public SQLiteConnection GetConnection()
         {
+            var nomeDB = Infrastructure.Constants.BaseAppConstants.DatabaseName;
             string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
 
@@ -22,7 +23,8 @@ namespace TesteBranco.iOS.Data
                 Directory.CreateDirectory(libFolder);
             }
 
-            return new SQLiteAsyncConnection(Path.Combine(libFolder, filename));
+            return new SQLiteConnection(Path.Combine(libFolder, nomeDB));
         }
+   
     }
 }

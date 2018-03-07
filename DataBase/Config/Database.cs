@@ -1,13 +1,9 @@
-﻿
+﻿using BaseApp.Data.Interface;
+using BaseApp.Infrastructure.Constants;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TesteBranco.Data.Interface;
-using TesteBranco.Infrastructure.Constants;
 using Xamarin.Forms;
 
-namespace TesteBranco.Data.Config
+namespace BaseApp.Data.Config
 {
     public class Database : IDatabase
     {

@@ -1,15 +1,14 @@
-﻿using System;
+﻿using BaseApp.Data.Interface;
+using BaseApp.Data.Models;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using TesteBranco.Data.Interface;
-using TesteBranco.Data.Models;
 
-namespace TesteBranco.Data.Repository
+namespace BaseApp.Data.Repository
 {
     public class Repository<T> : IRepository<T> where T : ModelBase, new()
     {
         readonly IDatabase Database;
+
         public Repository(IDatabase _database)
         {
             Database = _database;
