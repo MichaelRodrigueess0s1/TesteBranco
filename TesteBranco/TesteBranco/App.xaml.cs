@@ -1,14 +1,11 @@
 ﻿using Prism;
 using Prism.Ioc;
-using TesteBranco.ViewModels;
 using TesteBranco.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
-using TesteBranco.Services.Interface;
-using TesteBranco.Services.Services;
-using Unity.Lifetime;
-using TesteBranco.Infrastructure.Services;
+using SQLite;
+using Prism.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace TesteBranco
@@ -20,7 +17,13 @@ namespace TesteBranco
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
-        public App() : this(null) { }
+        //static IPageDialogService PageDialogService = new PageDialogService();
+
+         
+        public App() : this(null)
+        {
+            
+        }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
@@ -38,10 +41,9 @@ namespace TesteBranco
             containerRegistry.RegisterForNavigation<ListaProfissionais>();
             containerRegistry.RegisterForNavigation<DetalheProfissional>();
             containerRegistry.RegisterForNavigation<LoginPage>();
-            //containerRegistry.Register<IAccessControlService>("AccessControlService");
-            //containerRegistry.Register<ISettingsUser>("SettingsUser");
-            //containerRegistry.Register<IValuesService>("ValuesService");
-            //containerRegistry.Register<IAccessControlService, AccessControlService>(new ContainerControlledLifetimeManager());
+
+            //containerRegistry.RegisterInstance<IPageDialogService>(PageDialogService);
+
         }
 
 

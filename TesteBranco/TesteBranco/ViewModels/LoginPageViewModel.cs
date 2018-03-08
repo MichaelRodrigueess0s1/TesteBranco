@@ -9,21 +9,22 @@ using TesteBranco.Infrastructure.Constants;
 using TesteBranco.Models;
 using TesteBranco.Services.Interface;
 using TesteBranco.Services.Services;
-using SQLiteDataBase.Repository;
-using SQLiteDataBase.Models;
+using TesteBranco.Models.Repository;
+using TesteBranco.Models.UoW;
+
 
 namespace TesteBranco.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
-        public DelegateCommand GerarTokenCommand { get; }
-        
+
+        private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+        public DelegateCommand GerarTokenCommand { get; }        
 
         private IAccessControlService AccessControlService;
         private IPageDialogService DialogService;
         private Repository<Usuario> Repository;
         
-
         private UsuarioDTO userLogin;
 
         public UsuarioDTO UserLogin
@@ -36,30 +37,43 @@ namespace TesteBranco.ViewModels
         {
             UserLogin = new UsuarioDTO();
             //Repository = new Repository<Usuario>();
-
             GerarTokenCommand = new DelegateCommand(GenerateToken);
             AccessControlService = new AccessControlService();
             DialogService = dialogService;
-        }
+            _unitOfWork = new UnitOfWork();
 
-        //private bool CanExecuteGenerateToken()
-        //{
-        //    return !(string.IsNullOrEmpty(UserLogin.Login) || string.IsNullOrEmpty(UserLogin.Senha));
-        //}
+            int x = 2 + 3;
+
+        }             
 
         private async void GenerateToken()
         {
-
-            //await DialogService.DisplayAlertAsync("Sucesso", "Acesso Autorizado", "Ok");
-
-
             var retorno = await AccessControlService.Autenticar(UserLogin);
 
             if (retorno.IsSuccess)
-            {
-              //  await DialogService.DisplayAlertAsync("Sucesso", "Acesso Autorizado", "Ok");
+            {            
                 UserLogin = retorno.Content;
-                await NavigationService.NavigateAsync(BaseAppPageLinks.InicialPage);
+
+
+
+
+                Usuario usu = new Usuario
+                {
+                    AceitouTermo = true,
+                    Cpf = UserLogin.Cpf,
+                    DataTermo = true,
+                    Doc = UserLogin.Doc,
+                    IdToken = UserLogin.IdToken,
+                    Matricula = UserLogin.Matricula,
+                    Perfil = UserLogin.Perfil,
+                    Status = UserLogin.Status,
+                    Servico = UserLogin.Servico,
+                    Login = UserLogin.Login,
+                    Nome = UserLogin.Nome,
+                    Senha = UserLogin.Senha
+                };
+                usu = await _unitOfWork.RepositoryUsuario.Insert(usu);
+                await NavigationService.NavigateAsync(BaseAppPageLinks.ProfissionaisPage);
             }
             else
             {

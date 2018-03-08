@@ -17,14 +17,11 @@ namespace TesteBranco.iOS.Data
             var nomeDB = Infrastructure.Constants.BaseAppConstants.DatabaseName;
             string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
-
             if (!Directory.Exists(libFolder))
             {
                 Directory.CreateDirectory(libFolder);
             }
-
             return new SQLiteConnection(Path.Combine(libFolder, nomeDB));
-        }
-   
+        }   
     }
 }

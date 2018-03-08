@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace SQLiteDataBase.Interface
+namespace TesteBranco.Models.Interface
 {
     public interface IConnection
     {

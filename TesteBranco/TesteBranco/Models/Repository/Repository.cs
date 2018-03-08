@@ -1,13 +1,13 @@
 ﻿using SQLite;
-using SQLiteDataBase.Interface;
-using SQLiteDataBase.Models;
+using TesteBranco.Models.Interface;
+using TesteBranco.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 
-namespace SQLiteDataBase.Repository
+namespace TesteBranco.Models.Repository
 {
     public class Repository<T> : IRepository<T> where T : ModelBase, new()
     {

@@ -8,6 +8,7 @@ namespace TesteBranco.Infrastructure.Constants
     {
         public static readonly string InicialPage = "MainPage";
         public static readonly string LoginPage = "LoginPage";
+        public static readonly string ProfissionaisPage = "ListaProfissionais";
         //public static readonly string Profiss = "LoginPage";
 
     }
