@@ -4,12 +4,14 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TesteBranco.Models.UoW;
 
 namespace TesteBranco.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        public UnitOfWork _unitOfWork;// = new UnitOfWork();
 
         private string _title;
         public string Title
@@ -21,6 +23,7 @@ namespace TesteBranco.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
+            _unitOfWork = new UnitOfWork();
         }
 
         public virtual void OnNavigatedFrom(NavigationParameters parameters)

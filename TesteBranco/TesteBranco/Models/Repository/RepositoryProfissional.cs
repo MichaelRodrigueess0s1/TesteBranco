@@ -7,9 +7,9 @@ using System.Text;
 
 namespace TesteBranco.Models.Repository
 {
-    public class RepositoryUsuario : Repository<Usuario>, IRepository<Usuario>
+    public class RepositoryProfissional : Repository<Profissional>, IRepository<Profissional>
     {
-        public RepositoryUsuario(SQLiteAsyncConnection db) : base(db)
+        public RepositoryProfissional(SQLiteAsyncConnection db) : base(db)
         {
         }
     }

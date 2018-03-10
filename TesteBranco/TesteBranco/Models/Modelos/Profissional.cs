@@ -1,12 +1,13 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TesteBranco.Models
 {
-    public class Profissional
-    {
-        public int Id { get; set; }
+    [Table("Profissional")]
+    public class Profissional : ModelBase
+    {        
         public String Nome { get; set; }
         public String Descricao { get; set; }
         public String Especialidade { get; set; }

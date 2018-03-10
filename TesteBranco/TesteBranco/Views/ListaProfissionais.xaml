@@ -5,18 +5,24 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:bh="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              x:Class="TesteBranco.Views.ListaProfissionais">
+   
+    <StackLayout >
 
-    <ListView ItemsSource="{Binding Lista}">
-        <ListView.Behaviors>
-            <!--Vinculo por meio do Behavio a um comando da ViewModel-->
-            <bh:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemProfissionalCommand}" EventArgsParameterPath="Item"/>
-        </ListView.Behaviors>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ImageCell ImageSource="{Binding Imagem}" Text="{Binding Nome}" Detail="{Binding Especialidade}"></ImageCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    
-  
+
+        <StackLayout>
+            <Button Text="Adicionar" Command="{Binding AdicionaProfissionalCommand}"></Button>
+        </StackLayout>
+
+        <ListView ItemsSource="{Binding Lista}">
+            <ListView.Behaviors>
+                <!--Vinculo por meio do Behavio a um comando da ViewModel-->
+                <bh:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemProfissionalCommand}" EventArgsParameterPath="Item"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding Imagem}" Text="{Binding Nome}" Detail="{Binding Especialidade}"></ImageCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

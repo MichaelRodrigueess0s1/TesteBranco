@@ -12,7 +12,7 @@
     <RootNamespace>TesteBranco.Droid</RootNamespace>
     <AssemblyName>TesteBranco.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -58,6 +58,9 @@
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator">
       <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="LiveXAML">
+      <Version>2.1.22</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1</Version>

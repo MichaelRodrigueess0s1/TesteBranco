@@ -26,7 +26,24 @@ namespace TesteBranco.Models.UoW
             }
         }
 
-        
+        private RepositoryProfissional _repositoryProfissional;
+
+        public RepositoryProfissional RepositoryProfissional
+        {
+            get
+            {
+                if (_repositoryProfissional == null)
+                {
+                    _repositoryProfissional = new RepositoryProfissional(Connection);
+                }
+                return _repositoryProfissional;
+            }
+        }
+
+
+
+
+
         public UnitOfWork()
         {
             Connection = DependencyService.Get<IConnection>().GetConection();

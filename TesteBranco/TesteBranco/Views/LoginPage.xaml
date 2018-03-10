@@ -7,13 +7,13 @@
 
 
     <ContentPage.Content>
-        <StackLayout Padding="5, 5, 5, 5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <StackLayout Padding="4, 5, 5, 5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
             <Image Source="logoOficial.png" />            
             <Label Text="Login:" />
             <Entry HorizontalOptions="FillAndExpand" Text="{Binding UserLogin.Login}" />
             <Label Text="Senha:" />
             <Entry Text="{Binding UserLogin.Senha}" />
-            <Button Command="{Binding GerarTokenCommand}" Text="Acessar" />
+            <Button BackgroundColor="BlueViolet" TextColor="White" Command="{Binding GerarTokenCommand}" Text="Acessar" />
         </StackLayout>
     </ContentPage.Content>
 

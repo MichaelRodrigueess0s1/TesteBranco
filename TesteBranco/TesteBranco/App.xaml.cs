@@ -41,13 +41,7 @@ namespace TesteBranco
             containerRegistry.RegisterForNavigation<ListaProfissionais>();
             containerRegistry.RegisterForNavigation<DetalheProfissional>();
             containerRegistry.RegisterForNavigation<LoginPage>();
-
-            //containerRegistry.RegisterInstance<IPageDialogService>(PageDialogService);
-
+            //containerRegistry.RegisterInstance<IPageDialogService>(PageDialogService);            
         }
-
-
-
-
     }
 }

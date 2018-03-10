@@ -16,9 +16,7 @@ using TesteBranco.Models.UoW;
 namespace TesteBranco.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
-    {
-
-        private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+    {        
         public DelegateCommand GerarTokenCommand { get; }        
 
         private IAccessControlService AccessControlService;
@@ -39,11 +37,7 @@ namespace TesteBranco.ViewModels
             //Repository = new Repository<Usuario>();
             GerarTokenCommand = new DelegateCommand(GenerateToken);
             AccessControlService = new AccessControlService();
-            DialogService = dialogService;
-            _unitOfWork = new UnitOfWork();
-
-            int x = 2 + 3;
-
+            DialogService = dialogService;            
         }             
 
         private async void GenerateToken()
@@ -53,26 +47,30 @@ namespace TesteBranco.ViewModels
             if (retorno.IsSuccess)
             {            
                 UserLogin = retorno.Content;
-
-
-
-
-                Usuario usu = new Usuario
+                Usuario usu = await _unitOfWork.RepositoryUsuario.AsyncTableQuery().Where(x => x.Cpf.Equals(UserLogin.Cpf)).FirstOrDefaultAsync();                
+                if (usu == null)
                 {
-                    AceitouTermo = true,
-                    Cpf = UserLogin.Cpf,
-                    DataTermo = true,
-                    Doc = UserLogin.Doc,
-                    IdToken = UserLogin.IdToken,
-                    Matricula = UserLogin.Matricula,
-                    Perfil = UserLogin.Perfil,
-                    Status = UserLogin.Status,
-                    Servico = UserLogin.Servico,
-                    Login = UserLogin.Login,
-                    Nome = UserLogin.Nome,
-                    Senha = UserLogin.Senha
-                };
-                usu = await _unitOfWork.RepositoryUsuario.Insert(usu);
+                    usu = new Usuario
+                    {
+                        AceitouTermo = true,
+                        Cpf = UserLogin.Cpf,
+                        DataTermo = true,
+                        Doc = UserLogin.Doc,
+                        IdToken = UserLogin.IdToken,
+                        Matricula = UserLogin.Matricula,
+                        Perfil = UserLogin.Perfil,
+                        Status = UserLogin.Status,
+                        Servico = UserLogin.Servico,
+                        Login = UserLogin.Login,
+                        Nome = UserLogin.Nome,
+                        Senha = UserLogin.Senha
+                    };
+
+                    usu = await _unitOfWork.RepositoryUsuario.Insert(usu);
+                }else
+                {
+                    int resp = await _unitOfWork.RepositoryUsuario.Update(usu);
+                }             
                 await NavigationService.NavigateAsync(BaseAppPageLinks.ProfissionaisPage);
             }
             else

@@ -9,12 +9,14 @@ using System.Windows.Input;
 
 namespace TesteBranco.ViewModels
 {
-	public class ListaProfissionaisViewModel : BindableBase
-	{
+	public class ListaProfissionaisViewModel : ViewModelBase
+    {
         private INavigationService _navigationService;
-        private List<Profissional> _list;
+        public List<Profissional> _list;
 
         public ICommand LogarCommand { get; private set; }
+
+        public DelegateCommand AdicionaProfissionalCommand { get; }
 
 
         public List<Profissional> Lista
@@ -24,16 +26,23 @@ namespace TesteBranco.ViewModels
         }
 
 
-        public ListaProfissionaisViewModel(INavigationService navigationService)
+        public ListaProfissionaisViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            Lista = Util.GeraDados.GeradorProfissional();
+            PopulaListaAsync();             
             ItemProfissionalCommand = new DelegateCommand<Profissional>(ItemProfissional);
+            AdicionaProfissionalCommand = new DelegateCommand(NavegarAdicionarProfissionalCommand);
         }
 
-        /*navegação */
-        public DelegateCommand<Profissional> ItemProfissionalCommand { get; set; }
 
+        private async System.Threading.Tasks.Task PopulaListaAsync()
+        {
+            Lista = await _unitOfWork.RepositoryProfissional.Get();
+        }
+        
+
+        /*Commands */
+        public DelegateCommand<Profissional> ItemProfissionalCommand { get; set; }        
         private void ItemProfissional(Profissional profissional)
         {
             NavigationParameters param = new NavigationParameters();
@@ -41,7 +50,12 @@ namespace TesteBranco.ViewModels
             param.Add("Profissional", profissional);
             _navigationService.NavigateAsync("DetalheProfissional", param);
         }
-       
+
+        private  void NavegarAdicionarProfissionalCommand()
+        {
+            _navigationService.NavigateAsync("DetalheProfissional");
+        }
+        /*Commands */
 
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.2" />
+    <PackageReference Include="LiveXAML" Version="2.1.22" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="Prism.Core" Version="7.0.0.396" />
     <PackageReference Include="Prism.Forms" Version="7.0.0.396" />

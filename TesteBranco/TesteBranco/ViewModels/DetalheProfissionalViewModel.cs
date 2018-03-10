@@ -25,8 +25,6 @@ namespace TesteBranco.ViewModels
             set { SetProperty(ref _listaComentarios, value); }
         }
 
-
-
         public DetalheProfissionalViewModel()
         {
 
@@ -43,6 +41,9 @@ namespace TesteBranco.ViewModels
             {
                 Prof = parameters.GetValue<Profissional>("Profissional");
                 ListaComentarios = Util.GeraDados.GeradorComentarios(Prof);
+            }else
+            {
+                Prof = new Profissional();
             }
         } 
     }
